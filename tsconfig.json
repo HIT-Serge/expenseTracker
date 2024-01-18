@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "types": [
+      "node"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "Types"
+    ]
+  },
+  // "include": [
+  //   "components/**/*",
+  //   "types/**/*",
+  //   "./env.d.ts"
+  // ],
+  "extends": "expo/tsconfig.base"
+}
