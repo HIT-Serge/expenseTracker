@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Pressable, Platform, Image } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
-import { Colors, PressStyle } from "../constants";
+import { Colors, PressStyle } from "../../constants";
 
 export default function IconButton(props: { onPressHandler: () => void, icon: keyof typeof Ionicons.glyphMap, size: number, color: string }) {
 

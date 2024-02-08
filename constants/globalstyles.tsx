@@ -27,6 +27,12 @@ export const GlobalStyles: any = {
             backgroundColor: Colors.primary400,
             padding: 10,
             borderRadius: 10,
+            elevation: 5,
+            shadowColor: 'black',
+            shadowOffset: { width: 0, height: 2 },
+            shadowRadius: 10,
+            shadowOpacity: 0.26,
+
         },
         descriptionContainer: {
             backgroundColor: Colors.primary400,

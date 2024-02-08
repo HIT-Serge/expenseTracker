@@ -21,19 +21,3 @@ export default function ExpensesSummary({ expenses }: { expenses: ExpenseData[] 
         <ExpenseItem expense={expense} largeStyle={true} />
     )
 }
-
-
-// sumDescriptionText: {
-//     fontSize: 20,
-//     fontWeight: 'bold',
-//     color: 'white'
-
-// },
-
-// export type ExpenseData =
-//     {
-//         id: string
-//         description: string
-//         amount: number
-//         date: Date,
-//     }

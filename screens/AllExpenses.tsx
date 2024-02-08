@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from 'react';
 import { View, Text, Button } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import IconButton from '../components/IconButton';
+import IconButton from '../components/UI/IconButton';
 import { Colors } from "../constants";
 import ExpensesOutput from '../components/Expenses/ExpensesOutput';
 import { DUMMY_EXPENSES } from '../data/dummydata';
