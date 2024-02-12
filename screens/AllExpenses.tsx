@@ -5,14 +5,18 @@ import IconButton from '../components/UI/IconButton';
 import { Colors } from "../constants";
 import ExpensesOutput from '../components/Expenses/ExpensesOutput';
 import { DUMMY_EXPENSES } from '../data/dummydata';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-
+type RootStackParamList = {
+    ManageExpense: undefined;
+    // Add other screen names and their respective params here
+};
 
 
 
 export function AllExpenses() {
+    const navigation: NativeStackNavigationProp<RootStackParamList> = useNavigation();
 
-    const navigation = useNavigation();
     const expensesSortedArray = DUMMY_EXPENSES.sort((a, b) => {
         if (b.date && a.date) {
             return b.date.getTime() - a.date.getTime();
@@ -21,7 +25,7 @@ export function AllExpenses() {
     });
 
     function pressHandler() {
-        navigation.navigate('ManageExpense' as never);
+        navigation.navigate('ManageExpense' as any,)
     }
 
     useLayoutEffect(() => {
