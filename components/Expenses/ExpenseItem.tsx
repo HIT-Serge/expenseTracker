@@ -12,7 +12,7 @@ type RootStackParamList = {
 };
 // export default function ExpenseData({ expense: { description, amount, date } }: { expense: ExpenseData }) {
 
-export default function ExpenseItem({ expense, largeStyle }: { expense: ExpenseData, largeStyle: boolean }) {
+export default function ExpenseItem({ expense, largeStyle, editable }: { expense: ExpenseData, largeStyle: boolean, editable?: boolean, pressable?: boolean }) {
 
     const localDate: any = expense.date?.toLocaleDateString();
     const textStyle = largeStyle ? GlobalStyles.items.sumDescriptionText : GlobalStyles.items.itemDescriptionText;

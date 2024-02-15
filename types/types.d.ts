@@ -25,3 +25,15 @@ export type ExpenseData =
         amount: number
         date?: any
     }
+export type ExpenseContextType = {
+    expenses: string[];
+    addExpense: ({ description, amount, date }: ExpenseObject) => void;
+    updateExpense: (id: string, expenseData: ExpenseObject) => void;
+    removeExpense: (id: string, { description, amount, date }: { description: string, amount: number, date: Date }) => void;
+};
+
+export type ExpenseObject = {
+    description: string;
+    amount: number;
+    date: Date;
+};

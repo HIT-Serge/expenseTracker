@@ -8,12 +8,13 @@ interface IconProps {
     icon: keyof typeof Ionicons.glyphMap;
     size: number;
     color: string;
+    transparent?: boolean;
 }
 
-export default function IconButton({ onPressHandler, icon = 'add-circle-sharp', size = 20, color = Colors.primary700 }: IconProps) {
+export default function IconButton({ onPressHandler, icon = 'add-circle-sharp', size = 20, color = Colors.primary700, transparent = false }: IconProps) {
 
     return (
-        <View style={PressStyle.outerContainer}>
+        <View style={[PressStyle.outerContainer, transparent && { backgroundColor: 'transparent' }]}>
             <Pressable
                 style={({ pressed }) => pressed ? [PressStyle.pressableContainer, PressStyle.pressed] : PressStyle.pressableContainer}
                 android_ripple={{ color: Colors.primary200 }}
