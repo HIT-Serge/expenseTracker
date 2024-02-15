@@ -5,7 +5,7 @@ import { Colors, PressStyle } from '../constants';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import IconButton from '../components/UI/IconButton';
 import Button from '../components/UI/Button';
-import { ExpenseContext } from '../store/expenses-context';
+import { ExpensesContext } from '../store/expenses-context2';
 import { DUMMY_EXPENSES } from '../data/dummydata';
 import ExpenseItem from '../components/Expenses/ExpenseItem';
 import { ExpenseData, ExpenseContextType, ExpenseObject } from '../types/types';
@@ -18,7 +18,7 @@ export function ManageExpense() {
 
     const thisExpense: ExpenseData | undefined = DUMMY_EXPENSES.find((expense) => expense.id === (route.params as { expenseId?: string })?.expenseId);
 
-    const expenseData = useContext(ExpenseContext);
+    const expensesCtx = useContext(ExpensesContext);
     // console.log(expenseData);
 
     const editedExpenseId = (route.params as { expenseId?: string })?.expenseId;
@@ -26,10 +26,12 @@ export function ManageExpense() {
     const isEditing: boolean = !!editedExpenseId;
 
 
+
+
     const deleteExpenseHandler = () => {
-        console.log('delete expense id', thisExpense?.id);
-        console.log(expenseData.removeExpense);
-        expenseData.removeExpense(thisExpense?.id!);
+        console.log('delete expense id', editedExpenseId);
+        // console.log(expensesCtx.removeExpense);
+        expensesCtx.deleteExpense(editedExpenseId);
         navigation.goBack();
     }
 
