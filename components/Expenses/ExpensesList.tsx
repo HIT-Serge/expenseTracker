@@ -6,7 +6,7 @@ import HITFlatListWEB from '@hit/hitflatlistweb';
 
 export default function ExpensesList({ expenses }: { expenses: ExpenseData[] }) {
 
-
+    // console.log('expenses', expenses);
 
     return (
         <View style={{
@@ -17,7 +17,7 @@ export default function ExpensesList({ expenses }: { expenses: ExpenseData[] }) 
             <FlatList
                 data={expenses}
                 keyExtractor={(item, index) => item.id}
-                renderItem={(itemData) => { return (<ExpenseItem expense={itemData.item} largeStyle={false} />) }}
+                renderItem={(itemData) => { return (<ExpenseItem expense={itemData.item} largeStyle={false} editable={false} />) }}
             />
         </View>
     )

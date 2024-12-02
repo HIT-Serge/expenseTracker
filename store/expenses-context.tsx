@@ -31,7 +31,7 @@ const DUMMY_EXPENSES = [
         id: 'e5',
         description: 'Another book',
         amount: 18.59,
-        date: new Date('2024-02-04'),
+        date: new Date('2024-2-5'),
     },
     {
         id: 'e6',
@@ -49,7 +49,7 @@ const DUMMY_EXPENSES = [
         id: 'e8',
         description: 'A book',
         amount: 14.99,
-        date: new Date('2022-02-19'),
+        date: new Date('2024-02-19'),
     },
     {
         id: 'e9',
@@ -87,7 +87,7 @@ type ExpenseContextType = {
 };
 
 // context
-export const ExpenseContext = createContext<ExpenseContextType>({
+export const ExpensesContext = createContext<ExpenseContextType>({
     expenses: DUMMY_EXPENSES,
     addExpense: ({ description, amount, date }) => { },
     updateExpense: (id) => { },
@@ -95,35 +95,45 @@ export const ExpenseContext = createContext<ExpenseContextType>({
 });
 
 function expensesReducer(state: any, action: any) {
-    console.log('action', action);
     switch (action.type) {
         case 'ADD':
             const id = Math.random().toString();
             return [{ ...action.payload, id: id }, ...state];
         case 'REMOVE':
-            console.log('remove');
             return state.filter((expense: any) => expense.id !== action.payload);
         case 'UPDATE':
-            return state.filter((expense: any) => { if (expense.id === action.payload.id) { expense = action.payload.data } });
+
+            const matchedIndex = state.findIndex((expense: any) => { return expense.id === action.payload.id });
+            let updatableExpense = state[matchedIndex];
+            const updatedItem = { ...updatableExpense, ...action.payload.data };
+            const updatedState = [...state];
+            updatedState[matchedIndex] = updatedItem;
+
+            // console.log('state', updatedState);
+            // updatableExpense = updatedItem;
+
+            return updatedState;
+        // return state.map((expense: any) => { if (expense.id === action.payload.id) { expense = action.payload.data } });
         default:
-            return state;
+        // return state;
     }
 }
 
-export default function ExpenseContextProvider({ children }: PropsWithChildren) {
+export default function ExpensesContextProvider({ children }: PropsWithChildren) {
 
 
     const [expensesState, dispatch] = useReducer(expensesReducer, DUMMY_EXPENSES);
+    // console.log('expensesState', expensesState);
 
     // 3 functions
     function addExpense(expenseData: ExpenseObject) {
         dispatch({ type: 'ADD', payload: expenseData });
     }
     function updateExpense(id: string, expenseData: ExpenseObject) {
+        // console.log('update', id, expenseData);
         dispatch({ type: 'UPDATE', payload: { id: id, data: expenseData } });
     }
     function removeExpense(id: any) {
-        console.log('remove expense id');
         dispatch({ type: 'REMOVE', payload: id });
     }
 
@@ -142,7 +152,7 @@ export default function ExpenseContextProvider({ children }: PropsWithChildren) 
         updateExpense: updateExpense,
     };
 
-    return <ExpenseContext.Provider value={value}>
+    return (<ExpensesContext.Provider value={value}>
         {children}
-    </ExpenseContext.Provider>
+    </ExpensesContext.Provider>)
 }

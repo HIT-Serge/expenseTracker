@@ -23,7 +23,7 @@ export type ExpenseData =
         id: string
         description: string
         amount: number
-        date?: any
+        date: any
     }
 export type ExpenseContextType = {
     expenses: string[];

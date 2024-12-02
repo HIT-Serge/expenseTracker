@@ -16,8 +16,10 @@ export const bottomTabComponents: TabComponent[] = [
         name: 'RecentExpenses',
         title: 'Recent Expenses',
         icon: 'archive'
-    }
-];
+    },
+
+]
+
 
 //  stacks navigation rray
 

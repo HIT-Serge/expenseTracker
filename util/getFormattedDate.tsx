@@ -6,3 +6,9 @@ export default function getFormattedDate(date: Date, daysAgo: number = 0) {
     return formattedDate;
 }
 
+export function isoDate(date: any) {
+
+    // console.log('isodate', date);
+    return date.toLocaleDateString('nl-NL')
+
+}
