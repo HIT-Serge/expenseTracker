@@ -11,10 +11,5 @@
       "Types"
     ]
   },
-  // "include": [
-  //   "components/**/*",
-  //   "types/**/*",
-  //   "./env.d.ts"
-  // ],
   "extends": "expo/tsconfig.base"
 }
